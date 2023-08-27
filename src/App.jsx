@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { StartScreen } from './components/startScreen'
-import { GameBoard } from './components/GameBoard'
+import { CardBoard } from './components/CardBoard'
 
 function App() {
   //const [championNames, setChampionNames] = useState([])
@@ -15,13 +15,15 @@ function App() {
 
   return (
     <>
-    <h1>League Of Legends Memory Card Game</h1>
+    <header>
+      <h1>League Of Legends Memory Card Game</h1>
+    </header>
     {!isPlaying ?
       <StartScreen 
         startGame={startGame} 
       />
       :
-      <GameBoard numberOfChampions={numberOfChampions} />
+      <CardBoard numberOfChampions={numberOfChampions} />
     }
     </>
   )
