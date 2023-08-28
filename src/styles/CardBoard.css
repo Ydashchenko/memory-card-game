@@ -1,0 +1,21 @@
+.score {
+    align-self: center;
+    font-size: 1.8rem;
+}
+
+.card-board-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+.card-board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+    flex-wrap: wrap;
+    padding: 20px;
+}

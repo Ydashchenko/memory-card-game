@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 import { Card } from './Card'
 import { Popup } from './Popup';
+import '../styles/CardBoard.css'
 
 export function CardBoard({ numberOfChampions, setTab, highScore, setHighScore }) {
     const [allChampsArray, setAllChampsArray] = useState([]);
@@ -79,9 +80,9 @@ export function CardBoard({ numberOfChampions, setTab, highScore, setHighScore }
     }
 
     return (
-        <main>
-            <p>Score: {score}</p>
-            <div>
+        <main className='card-board-container'>
+            <p className='score'>Current score: {score}</p>
+            <div className='card-board'>
                 {deckToPlay.map((champ) => (
                     <Card onCardClick={handleCardClick} champ={champ} key={champ} />
                 ))}
