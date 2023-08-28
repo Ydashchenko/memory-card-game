@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './styles/App.css'
-import { StartScreen } from './components/startScreen'
+import { StartScreen } from './components/StartScreen'
 import { CardBoard } from './components/CardBoard'
 
 export default function App() {
