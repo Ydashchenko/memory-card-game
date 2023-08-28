@@ -1,33 +1,37 @@
-import { useEffect, useState } from 'react'
-import './App.css'
+import { useState } from 'react'
+import './styles/App.css'
 import { StartScreen } from './components/startScreen'
 import { CardBoard } from './components/CardBoard'
 
-function App() {
-  //const [championNames, setChampionNames] = useState([])
-  const [isPlaying, setIsPlaying] = useState(false)
+export default function App() {
+  const [tab, setTab] = useState('main')
   const [numberOfChampions, setNumberOfChampions] = useState('')
+  const [highScore, setHighScore] = useState(localStorage.getItem("highScore") || 0);
  
   function startGame(number) {
-    setIsPlaying(true)
+    setTab('game')
     setNumberOfChampions(number)
   }
 
   return (
     <>
     <header>
-      <h1>League Of Legends Memory Card Game</h1>
+      <p>High Score: {highScore}</p>
     </header>
-    {!isPlaying ?
+    {tab == "main" ?
       <StartScreen 
         startGame={startGame} 
       />
       :
-      <CardBoard numberOfChampions={numberOfChampions} />
+      <CardBoard 
+        setTab={setTab} 
+        numberOfChampions={numberOfChampions}
+        highScore={highScore}
+        setHighScore={setHighScore}
+      />
     }
     </>
   )
 
 }
 
-export default App
