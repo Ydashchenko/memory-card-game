@@ -14,10 +14,10 @@ import '../styles/StartScreen.css'
 
 export function StartScreen({ startGame }) {
     return (
-        <main>
+        <main className='start-screen'>
             <h1>League Of Brain</h1>
             <h2>Choose Difficulty:</h2>
-            <div>
+            <div className='rank-list'>
                 <button className='rank-btn' onClick={() => startGame(5)}>
                     <img className='emblem' src={emblemIron} alt="Iron" />
                     <p>Iron</p>
@@ -38,10 +38,6 @@ export function StartScreen({ startGame }) {
                     <img className='emblem' src={emblemPlatinum} alt="Platinum" />
                     <p>Platinum</p>
                 </button>
-                <button className='rank-btn' onClick={() => startGame(30)}>
-                    <img className='emblem' src="https://mp1st.com/wp-content/uploads/2023/06/Screenshot-2023-06-08-at-8.41.45-PM.png" alt="Emerald" />
-                    <p>Emerald</p>
-                </button>
                 <button className='rank-btn' onClick={() => startGame(35)}>
                     <img className='emblem' src={emblemDiamond} alt="Diamond" />
                     <p>Diamond</p>
@@ -59,8 +55,8 @@ export function StartScreen({ startGame }) {
                     <p>Challenger</p>
                 </button>
             </div>
-            <div>
-                <h3>Rules: </h3>
+            <div className='rules-container'>
+                <h3 className='rules'>Rules: </h3>
                 <p>Click each champion only once!</p>
             </div>
         </main>
