@@ -21,19 +21,26 @@ export function CardBoard({ numberOfChampions, setTab, highScore, setHighScore }
 
     function handleCardClick(champ) {
         if (openedCards.includes(champ)) {
-            // If the card has been opened before, game over
             if (score > highScore) {
-                setHighScore(score);
-                localStorage.setItem("highScore", score);
+                setHighScore(score); // Update high score in state
+                localStorage.setItem("highScore", score.toString()); // Store high score in localStorage as string
             }
-            setEndGame('lose')
+            setEndGame('lose');
         } else {
             // If the card is opened for the first time, increase score
-            setScore(score + 1);
+            const newScore = score + 1;
+            setScore(newScore);
+            
+            if (newScore > highScore) {
+                setHighScore(newScore); // Update high score in state
+                localStorage.setItem("highScore", newScore.toString()); // Store high score in localStorage as string
+            }
+            
             setOpenedCards([...openedCards, champ]);
             shuffleCards();
         }
     }
+    
 
     function shuffleCards() {
         const shuffledChamps = deckToPlay.slice();
@@ -98,6 +105,6 @@ export function CardBoard({ numberOfChampions, setTab, highScore, setHighScore }
 CardBoard.propTypes = {
     numberOfChampions: PropTypes.number,
     setTab: PropTypes.func,
-    highScore: PropTypes.string,
+    highScore: PropTypes.number,
     setHighScore: PropTypes.func
 }

@@ -18,18 +18,18 @@ export default function App() {
     <header>
       <p>High Score: {highScore}</p>
     </header>
-    {tab == "main" ?
+    {tab === "main" ? (
       <StartScreen 
-        startGame={startGame} 
+        startGame={startGame}
       />
-      :
+    ) : (
       <CardBoard 
         setTab={setTab} 
         numberOfChampions={numberOfChampions}
-        highScore={highScore}
+        highScore={parseInt(highScore)}
         setHighScore={setHighScore}
       />
-    }
+    )}
     </>
   )
 
