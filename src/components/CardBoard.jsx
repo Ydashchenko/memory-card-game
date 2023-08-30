@@ -23,7 +23,7 @@ export function CardBoard({ numberOfChampions, setTab, highScore, setHighScore }
         if (openedCards.includes(champ)) {
             if (score > highScore) {
                 setHighScore(score); // Update high score in state
-                localStorage.setItem("highScore", score.toString()); // Store high score in localStorage as string
+                localStorage.setItem("highScore", score);
             }
             setEndGame('lose');
         } else {
@@ -33,7 +33,7 @@ export function CardBoard({ numberOfChampions, setTab, highScore, setHighScore }
             
             if (newScore > highScore) {
                 setHighScore(newScore); // Update high score in state
-                localStorage.setItem("highScore", newScore.toString()); // Store high score in localStorage as string
+                localStorage.setItem("highScore", newScore);
             }
             
             setOpenedCards([...openedCards, champ]);
