@@ -4,12 +4,14 @@ import { Card } from './Card'
 import { Popup } from './Popup';
 import '../styles/CardBoard.css'
 
-export function CardBoard({ numberOfChampions, setTab, highScore, setHighScore }) {
+export function CardBoard({ numberOfChampions, setTab, highScore, setHighScore, difficulty, setCurrentRank, currentRank, Ranks }) {
     const [allChampsArray, setAllChampsArray] = useState([]);
     const [deckToPlay, setDeckToPlay] = useState([]);
     const [openedCards, setOpenedCards] = useState([]);
     const [score, setScore] = useState(0);
     const [endGame, setEndGame] = useState('');
+    const [newHighScore, setNewHighScore] = useState(false)
+    const [shouldShowNewRank, setShouldShowNewRank] = useState(false)
 
 
     useEffect(() => {
@@ -24,6 +26,7 @@ export function CardBoard({ numberOfChampions, setTab, highScore, setHighScore }
             if (score > highScore) {
                 setHighScore(score); // Update high score in state
                 localStorage.setItem("highScore", score);
+                setNewHighScore(true)
             }
             setEndGame('lose');
         } else {
@@ -34,6 +37,7 @@ export function CardBoard({ numberOfChampions, setTab, highScore, setHighScore }
             if (newScore > highScore) {
                 setHighScore(newScore); // Update high score in state
                 localStorage.setItem("highScore", newScore);
+                setNewHighScore(true)
             }
             
             setOpenedCards([...openedCards, champ]);
@@ -84,17 +88,33 @@ export function CardBoard({ numberOfChampions, setTab, highScore, setHighScore }
         setOpenedCards([]);
         setEndGame('');
         shuffleCards();
+        setShouldShowNewRank(false)
     }
 
     return (
         <main className='card-board-container'>
-            <p className='score'>Current score: {score}</p>
+            <div className='info'>
+                <p className='score'>Current score: {score}</p>
+                <p className='champions-left'>Champions left: {numberOfChampions - score}</p>
+            </div>
             <div className='card-board'>
                 {deckToPlay.map((champ) => (
                     <Card onCardClick={handleCardClick} champ={champ} key={champ} />
                 ))}
                 {endGame && (
-                    <Popup score={score} endGame={endGame} playAgain={playAgain}/>
+                    <Popup
+                        currentRank={currentRank}
+                        highScore={highScore}
+                        newHighScore={newHighScore}
+                        score={score}
+                        endGame={endGame}
+                        playAgain={playAgain}
+                        setCurrentRank={setCurrentRank}
+                        difficulty= {difficulty}
+                        Ranks={Ranks}
+                        shouldShowNewRank={shouldShowNewRank}
+                        setShouldShowNewRank={setShouldShowNewRank}
+                    />
                 )}
             </div>
         </main>
@@ -106,5 +126,9 @@ CardBoard.propTypes = {
     numberOfChampions: PropTypes.number,
     setTab: PropTypes.func,
     highScore: PropTypes.number,
-    setHighScore: PropTypes.func
+    setHighScore: PropTypes.func,
+    setCurrentRank: PropTypes.func,
+    difficulty: PropTypes.number,
+    currentRank: PropTypes.object,
+    Ranks: PropTypes.array
 }

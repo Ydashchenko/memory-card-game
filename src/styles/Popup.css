@@ -29,10 +29,34 @@
     padding: 5px;
 }
 
-.result-text {
-    font-size: 1.2rem;
+.result-text, .new-record, .new-rank-container p {
+    font-size: 1.5rem;
+}
+
+.end-game-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    overflow: hidden;
 }
 
 .end-game-header {
     font-size: 2rem;
 }
+
+.popup-rank {
+    object-fit: cover;
+    width: 200px;
+    transform: scale(4);
+}
+
+.new-rank-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+

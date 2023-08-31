@@ -4,12 +4,6 @@
     padding: 0;
 }
 
-header {
-    text-align: end;
-    font-size: 2rem;
-    padding: 20px;
-}
-
 #root {
     min-height: 100vh;
     display: flex;

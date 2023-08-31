@@ -1,6 +1,12 @@
-.score {
-    align-self: center;
+.info p {
     font-size: 1.8rem;
+}
+
+.info {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .card-board-container {
@@ -18,4 +24,10 @@
     flex: 1;
     flex-wrap: wrap;
     padding: 20px;
+}
+
+@media (max-width: 680px) {
+    .card-board {
+        gap: 5px;
+    }
 }

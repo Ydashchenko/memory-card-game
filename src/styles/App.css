@@ -1,0 +1,40 @@
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2rem;
+    padding: 20px;
+    gap: 10px;
+    border-bottom: 3px solid;
+    margin-bottom: 20px;
+}
+
+.current-rank img {
+    object-fit: cover;
+    width: 60px;
+    transform: scale(4);
+}
+
+.current-rank {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.record-container img {
+    object-fit: cover;
+    width: 35px;
+}
+
+.record-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+@media (max-width: 680px) {
+    header {
+        transform: scale(0.5);
+    }
+}
